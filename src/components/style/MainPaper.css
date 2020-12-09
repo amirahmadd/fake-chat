@@ -1,0 +1,9 @@
+.messageContainer{
+    height: 650px;
+    overflow-y: scroll;
+    padding-right:25px;
+    padding-left:20px;
+}
+.fakeBtn{
+    margin-top: 100%;
+}
