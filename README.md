@@ -1,13 +1,13 @@
 # react fake chat
 
 ### features :)
-sendig fake message Automatic
-Loading new message by scrolling down 
-Loading old messages by scrolling up
-Button to create new fake message
-Adding a temporary badge for new messages
-Time and sender support
-Image support  
+sendig fake message Automatic .\
+Loading new message by scrolling down .\ 
+Loading old messages by scrolling up .\
+Button to create new fake message .\
+Adding a temporary badge for new messages .\
+Time and sender support .\
+Image support  .\
 
 
 
@@ -82,3 +82,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
