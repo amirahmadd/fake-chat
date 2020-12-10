@@ -1,10 +1,17 @@
 import React from "react";
-import { Button } from "@material-ui/core";
+import { Button, Badge } from "@material-ui/core";
 import MessageList from "./MesageList";
 import Loading from "./Loading";
 import "./style/MainPaper.css";
 const MainPaper = (props) => {
-  const { messages, fakeCreator, loadMore, loadTopMessage , isLoading } = props;
+  const {
+    messages,
+    fakeCreator,
+    loadMore,
+    loadTopMessage,
+    isLoading,
+    newMessage,
+  } = props;
   const clickHandler = () => {
     fakeCreator("testInput");
   };
@@ -14,12 +21,13 @@ const MainPaper = (props) => {
       e.target.scrollHeight
     ) {
       loadMore();
-    }else if (e.target.scrollTop === 0){
+    } else if (e.target.scrollTop === 0) {
       loadTopMessage();
     }
   };
   return (
     <div>
+      {newMessage && <Badge color="secondary" variant="dot" /> }
       <div className="messageContainer" onScroll={(e) => load(e)}>
         <MessageList messages={messages} />
       </div>

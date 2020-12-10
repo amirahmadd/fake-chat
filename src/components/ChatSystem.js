@@ -32,10 +32,16 @@ const reducer = (state, action) => {
         ...state,
         messages: [...action.payLoad, ...state.messages],
       };
-    case "INTERVAL":
+    case "ADDAUTOMESSAGE":
       return {
         ...state,
-        interval: action.payLoad,
+        messages: [...state.messages, action.payLoad],
+        newMessage: true,
+      };
+    case "HIDENEWMSG":
+      return {
+        ...state,
+        newMessage: false,
       };
     default:
       break;
@@ -48,9 +54,10 @@ const ChatSystem = () => {
     isLoading: false,
     isTyping: false,
     interval: null,
+    newMessage: false,
   });
   useEffect(() => {
-    const interval = setInterval(() => autoMessage(), 8000);
+    const interval = setInterval(() => autoMessage(), 6000);
     return () => {
       clearInterval(interval);
     };
@@ -61,7 +68,7 @@ const ChatSystem = () => {
     setTimeout(() => {
       fakeCreator("auto fake msg");
       dispatch({ type: "TYPING" });
-    }, 3500);
+    }, 3000);
   };
 
   const fakeCreator = (value) => {
@@ -72,9 +79,10 @@ const ChatSystem = () => {
       date: new Date(),
     };
     dispatch({
-      type: "ADDMESSAGE",
+      type: "ADDAUTOMESSAGE",
       payLoad: message,
     });
+    setTimeout(()=>dispatch({ type: "HIDENEWMSG" }),2000);
   };
   const loadMore = () => {
     if (!state.isLoading) {
@@ -167,6 +175,7 @@ const ChatSystem = () => {
           <MainPaper
             isLoading={state.isLoading}
             messages={state.messages}
+            newMessage={state.newMessage}
             fakeCreator={fakeCreator}
             loadMore={loadMore}
             loadTopMessage={loadTop}
