@@ -190,6 +190,7 @@ const ChatSystem = () => {
           <IsTyping check={state.isTyping} />
           <MainPaper
             isLoading={state.isLoading}
+            isTyping={state.isTyping}
             messages={state.messages}
             newMessage={state.newMessage}
             fakeCreator={fakeCreator}
@@ -199,6 +200,7 @@ const ChatSystem = () => {
           <InputComponent
             sendHandler={sendMessage}
             sendImage={attachHandler}
+            
           />
         </Paper>
       </Container>

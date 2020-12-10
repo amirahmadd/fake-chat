@@ -11,14 +11,15 @@ const MainPaper = (props) => {
     loadTopMessage,
     isLoading,
     newMessage,
+    isTyping,
   } = props;
   const clickHandler = () => {
     fakeCreator("testInput");
   };
 
   // scrolling event ,
-  // load new fake messages by scrolling down 
-  // and old messages by scrolling up 
+  // load new fake messages by scrolling down
+  // and old messages by scrolling up
   const load = (e) => {
     if (
       e.target.offsetHeight + e.target.scrollTop + 1 >=
@@ -31,7 +32,7 @@ const MainPaper = (props) => {
   };
   return (
     <div>
-      {newMessage && <Badge color="secondary" variant="dot" /> }
+      {newMessage && <Badge color="secondary" variant="dot" />}
       <div className="messageContainer" onScroll={(e) => load(e)}>
         <MessageList messages={messages} />
       </div>
@@ -42,6 +43,7 @@ const MainPaper = (props) => {
           className="fakeBtn"
           variant="outlined"
           color="primary"
+          disabled={isTyping}
           onClick={clickHandler}
         >
           fake message

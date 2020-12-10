@@ -78,7 +78,7 @@ const InputComponent = ({ sendHandler, sendImage }) => {
               onChange={(e) => attachHandler(e)}
             />
             <label htmlFor="attach-file">
-              <Button style={{ margin: 15, display: "flex" }} component="span">
+              <Button style={{ margin: 15, display: "flex" }} component="span" >
                 <AttachmentIcon
                   style={{ display: "flex" }}
                   color="action"
