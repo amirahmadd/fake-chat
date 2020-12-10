@@ -4,7 +4,7 @@ import MessageList from "./MesageList";
 import Loading from "./Loading";
 import "./style/MainPaper.css";
 const MainPaper = (props) => {
-  const { messages, fakeCreator, loadMore, isLoading } = props;
+  const { messages, fakeCreator, loadMore, loadTopMessage , isLoading } = props;
   const clickHandler = () => {
     fakeCreator("testInput");
   };
@@ -14,6 +14,8 @@ const MainPaper = (props) => {
       e.target.scrollHeight
     ) {
       loadMore();
+    }else if (e.target.scrollTop === 0){
+      loadTopMessage();
     }
   };
   return (

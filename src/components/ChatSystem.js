@@ -27,6 +27,11 @@ const reducer = (state, action) => {
         ...state,
         isTyping: !state.isTyping,
       };
+    case "LOADOLDMSG":
+      return {
+        ...state,
+        messages: [...action.payLoad, ...state.messages],
+      };
     case "INTERVAL":
       return {
         ...state,
@@ -47,10 +52,10 @@ const ChatSystem = () => {
   useEffect(() => {
     const interval = setInterval(() => autoMessage(), 8000);
     return () => {
-        clearInterval(interval)
-    }
+      clearInterval(interval);
+    };
   });
- 
+
   const autoMessage = () => {
     dispatch({ type: "TYPING" });
     setTimeout(() => {
@@ -61,7 +66,7 @@ const ChatSystem = () => {
 
   const fakeCreator = (value) => {
     let message = {
-      id: state.messages.length +1,
+      id: state.messages.length + 1,
       text: value,
       sender: "fake user",
       date: new Date(),
@@ -94,6 +99,34 @@ const ChatSystem = () => {
       }, 2000);
     }
   };
+
+  const loadTop = () => {
+    if (!state.isLoading) {
+      dispatch({ type: "SETLOADSTATUS" });
+      let test = [];
+      let firstId = state.messages[0].id;
+      setTimeout(() => {
+        for (let i = 4; i >= 1; i--) {
+          let yesterday = new Date();
+          yesterday.setDate(yesterday.getDate() - 1);
+          test.push({
+            id: firstId - i,
+            text: "top messages",
+            sender: "fake user 2",
+            date: yesterday,
+          });
+        }
+        dispatch({
+          type: "LOADOLDMSG",
+          payLoad: test,
+        });
+
+        dispatch({ type: "SETLOADSTATUS" });
+      }, 2000);
+      console.log(state.messages);
+    }
+  };
+
   const sendMessage = (value) => {
     let message = {
       id: state.messages.length + 1,
@@ -136,6 +169,7 @@ const ChatSystem = () => {
             messages={state.messages}
             fakeCreator={fakeCreator}
             loadMore={loadMore}
+            loadTopMessage={loadTop}
           />
           <InputComponent
             typing={typing}
