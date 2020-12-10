@@ -2,12 +2,12 @@
 
 ### features :)
 sendig fake message Automatic .\
-Loading new message by scrolling down .\ 
+Loading new message by scrolling down . 
 Loading old messages by scrolling up .\
 Button to create new fake message .\
 Adding a temporary badge for new messages .\
 Time and sender support .\
-Image support  .\
+Image support
 
 
 
@@ -42,7 +42,6 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
 ### `yarn eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
