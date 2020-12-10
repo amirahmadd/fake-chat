@@ -49,6 +49,7 @@ const reducer = (state, action) => {
 };
 
 const ChatSystem = () => {
+  //manage states & lifecycles
   const [state, dispatch] = useReducer(reducer, {
     messages: [],
     isLoading: false,
@@ -63,6 +64,10 @@ const ChatSystem = () => {
     };
   });
 
+  // event handlers
+
+  // new new fake message Automatically 
+  // and set the typing status to true
   const autoMessage = () => {
     dispatch({ type: "TYPING" });
     setTimeout(() => {
@@ -71,6 +76,9 @@ const ChatSystem = () => {
     }, 3000);
   };
 
+  // message creator for auto or Manually creat msg 
+  // create new message object and dispach action
+  // to add to state.messages & hide new msg badge
   const fakeCreator = (value) => {
     let message = {
       id: state.messages.length + 1,
@@ -84,6 +92,9 @@ const ChatSystem = () => {
     });
     setTimeout(()=>dispatch({ type: "HIDENEWMSG" }),2000);
   };
+
+  // load more messages when scrolling down (end of messages)
+  // create an array of messages and add to state
   const loadMore = () => {
     if (!state.isLoading) {
       dispatch({ type: "SETLOADSTATUS" });
@@ -108,6 +119,9 @@ const ChatSystem = () => {
     }
   };
 
+  // load more messages when scrolling up (load old messages)
+  // create an array of messages and add them before 
+  // other messages in state 
   const loadTop = () => {
     if (!state.isLoading) {
       dispatch({ type: "SETLOADSTATUS" });
@@ -131,10 +145,11 @@ const ChatSystem = () => {
 
         dispatch({ type: "SETLOADSTATUS" });
       }, 2000);
-      console.log(state.messages);
     }
   };
 
+  // event handler for sending new message by
+  // user inputs 
   const sendMessage = (value) => {
     let message = {
       id: state.messages.length + 1,
@@ -147,6 +162,8 @@ const ChatSystem = () => {
       payLoad: message,
     });
   };
+
+  // event handler for sending images
   const attachHandler = (file) => {
     try {
       const image = URL.createObjectURL(file);
@@ -166,7 +183,6 @@ const ChatSystem = () => {
     }
   };
 
-  const typing = (value) => {};
   return (
     <div className="mainDiv">
       <Container>
@@ -181,7 +197,6 @@ const ChatSystem = () => {
             loadTopMessage={loadTop}
           />
           <InputComponent
-            typing={typing}
             sendHandler={sendMessage}
             sendImage={attachHandler}
           />

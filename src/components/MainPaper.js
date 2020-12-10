@@ -15,6 +15,10 @@ const MainPaper = (props) => {
   const clickHandler = () => {
     fakeCreator("testInput");
   };
+
+  // scrolling event ,
+  // load new fake messages by scrolling down 
+  // and old messages by scrolling up 
   const load = (e) => {
     if (
       e.target.offsetHeight + e.target.scrollTop + 1 >=
