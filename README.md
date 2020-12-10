@@ -1,4 +1,18 @@
-# Getting Started with Create React App
+# react fake chat
+
+### features :)
+sendig fake message Automatic .\
+Loading new message by scrolling down .\ 
+Loading old messages by scrolling up .\
+Button to create new fake message .\
+Adding a temporary badge for new messages .\
+Time and sender support .\
+Image support  .\
+
+
+
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
