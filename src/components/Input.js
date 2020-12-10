@@ -25,6 +25,7 @@ const InputComponent = ({ sendHandler, sendImage }) => {
   const [newMessage, setMessage] = useState("");
   const classes = useStyles();
 
+  
   const InputHandler = (e) => {
     setMessage(e.target.value);
   };

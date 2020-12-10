@@ -1,25 +1,37 @@
 import React from "react";
-import { Button } from "@material-ui/core";
+import { Button, Badge } from "@material-ui/core";
 import MessageList from "./MesageList";
 import Loading from "./Loading";
 import "./style/MainPaper.css";
 const MainPaper = (props) => {
-  const { messages, fakeCreator, loadMore, loadTopMessage , isLoading } = props;
+  const {
+    messages,
+    fakeCreator,
+    loadMore,
+    loadTopMessage,
+    isLoading,
+    newMessage,
+  } = props;
   const clickHandler = () => {
     fakeCreator("testInput");
   };
+
+  // scrolling event ,
+  // load new fake messages by scrolling down 
+  // and old messages by scrolling up 
   const load = (e) => {
     if (
       e.target.offsetHeight + e.target.scrollTop + 1 >=
       e.target.scrollHeight
     ) {
       loadMore();
-    }else if (e.target.scrollTop === 0){
+    } else if (e.target.scrollTop === 0) {
       loadTopMessage();
     }
   };
   return (
     <div>
+      {newMessage && <Badge color="secondary" variant="dot" /> }
       <div className="messageContainer" onScroll={(e) => load(e)}>
         <MessageList messages={messages} />
       </div>
