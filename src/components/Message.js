@@ -2,7 +2,7 @@ import React from "react";
 import { Paper, Typography, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
-import ChatImage from './ChatImage'
+import ChatImage from "./ChatImage";
 import "./style/messageList.css";
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,13 +14,13 @@ const useStyles = makeStyles((theme) => ({
   },
   myMessages: {
     backgroundColor: "lightgreen",
-    padding: '6px',
-    paddingLeft:'10px'
+    padding: "6px",
+    paddingLeft: "10px",
   },
   otherMessages: {
     backgroundColor: "lightblue",
-    padding: '6px',
-    paddingRight:'10px'
+    padding: "6px",
+    paddingRight: "10px",
   },
   text: {
     marginTop: 5,
@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 325,
   },
 }));
-const Message = ({message}) => {
+const Message = ({ message }) => {
   const classes = useStyles();
   return (
     <>
@@ -68,8 +68,9 @@ const Message = ({message}) => {
             >
               {message.text}
             </Typography>
-          ) :    <ChatImage message={message} />
-          }
+          ) : (
+            <ChatImage message={message} />
+          )}
         </Paper>
       </Grid>
       <Typography
@@ -82,8 +83,9 @@ const Message = ({message}) => {
           float: `${message.sender === "user" ? "right" : "left"}`,
         }}
       >
-        {new Date(message.date).getHours()}:
-        {new Date(message.date).getMinutes()}
+        {message.date.getMonth()}/{message.date.getDate()}
+        &#8209;
+        {message.date.getHours()}:{message.date.getMinutes()}
       </Typography>
     </>
   );
