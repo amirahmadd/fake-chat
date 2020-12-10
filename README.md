@@ -7,7 +7,7 @@ Loading old messages by scrolling up .\
 Button to create new fake message .\
 Adding a temporary badge for new messages .\
 Time and sender support .\
-Image support  .\
+Image support 
 
 
 
